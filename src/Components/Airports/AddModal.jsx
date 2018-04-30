@@ -112,7 +112,7 @@ class AddModal extends Component {
             </div>
 
             <div className="modal-footer">
-              <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
+              <button type="button" className="btn btn-outline-danger" data-dismiss="modal">Закрити</button>
             </div>
 
           </div>

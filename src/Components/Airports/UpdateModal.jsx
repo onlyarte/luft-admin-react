@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 class UpdateModal extends Component {
   static getDerivedStateFromProps(nextProps) {
-    return { name: nextProps.name };
+    return { name: nextProps.airport.name };
   }
 
   constructor(props) {
@@ -123,7 +123,7 @@ class UpdateModal extends Component {
             </div>
 
             <div className="modal-footer">
-              <button type="button" className="btn btn-danger" data-dismiss="modal" ref={this.closeButton}>Закрити</button>
+              <button type="button" className="btn btn-outline-danger" data-dismiss="modal" ref={this.closeButton}>Закрити</button>
             </div>
 
           </div>

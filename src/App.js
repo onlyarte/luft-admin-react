@@ -4,6 +4,7 @@ import axios from 'axios';
 import './App.css';
 
 import AirportPane from './Components/Airports/Pane';
+import PlanePane from './Components/Planes/Pane';
 
 class App extends Component {
   constructor(props) {
@@ -108,6 +109,7 @@ class App extends Component {
                   <AirportPane airports={this.state.airports} onChange={this.loadAirports} />
                 </div>
                 <div className="tab-pane fade" id="planes" role="tabpanel">
+                  <PlanePane planes={this.state.planes} onChange={this.loadPlanes} />
                 </div>
                 <div className="tab-pane fade" id="reports" role="tabpanel">
                 </div>

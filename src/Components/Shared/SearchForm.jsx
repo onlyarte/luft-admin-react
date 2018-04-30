@@ -25,12 +25,12 @@ class SearchForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const { prop, query } = this.state;
-    this.props.onSubmit({ query, prop: prop.name });
+    this.props.onSubmit(prop.name, query);
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} style={{ width: '100%' }}>
         <div className="form-group input-group">
           <div className="input-group-prepend">
             <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
