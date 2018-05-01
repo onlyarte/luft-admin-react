@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import AddModal from './AddModal';
-import UpdateModal from './UpdateModal';
 import SearchForm from '../Shared/SearchForm';
 import Pagination from '../Shared/Pagination';
 
@@ -16,26 +15,33 @@ class Pane extends Component {
 
     this.schema = [
       {
-        name: 'originAirport',
-        secondary: 'name',
+        name: 'connection',
+        secondary: 'originAirport',
         title: 'З',
       },
       {
-        name: 'destinationAirport',
-        secondary: 'name',
+        name: 'connection',
+        secondary: 'destinationAirport',
         title: 'До',
       },
       {
-        name: 'departureTime',
+        name: 'date',
+        title: 'Дата',
+      },
+      {
+        name: 'connection',
+        secondary: 'departureTime',
         title: 'Відправлення',
       },
       {
-        name: 'arrivalTime',
+        name: 'connection',
+        secondary: 'arrivalTime',
         title: 'Прибуття',
       },
       {
-        name: 'distance',
-        title: 'Відстань',
+        name: 'plane',
+        secondary: 'tailNum',
+        title: 'Літак',
       },
     ];
 
@@ -50,14 +56,14 @@ class Pane extends Component {
       },
       pagination: {
         current: 0,
-        step: 5,
+        step: 10,
       },
     };
   }
 
   getFiltered() {
-    const { connections } = this.props;
-    let filtered = [...connections];
+    const { flights } = this.props;
+    let filtered = [...flights];
 
     const searchProp = this.state.search.prop;
     const { query } = this.state.search;
@@ -111,8 +117,8 @@ class Pane extends Component {
 
   render() {
     const { current, step } = this.state.pagination;
-    const connections = this.getFiltered();
-    const displayedConnections = connections
+    const flights = this.getFiltered();
+    const displayedFlights = flights
       .slice(current * step, (current * step) + step);
 
     return (
@@ -123,8 +129,8 @@ class Pane extends Component {
           <table className="table table-striped table-hover">
             <thead>
               <tr>
-                {this.schema.map(prop => (
-                  <th key={prop.name}>
+                {this.schema.map((prop, index) => (
+                  <th key={prop.name + index}>
                     {prop.title}{' '}
                     <a
                       role="button"
@@ -153,41 +159,31 @@ class Pane extends Component {
                     type="button"
                     className="btn btn-outline-primary btn-sm btn-block"
                     data-toggle="modal"
-                    data-target="#connection-add-modal"
+                    data-target="#flight-add-modal"
                   >
                     Додати
                   </button>
-                  <AddModal id="connection-add-modal" airports={this.props.airports} onSubmit={this.props.onChange} />
+                  <AddModal id="flight-add-modal" connections={this.props.connections} planes={this.props.planes} onSubmit={this.props.onChange} />
                 </th>
               </tr>
             </thead>
             <tbody>
-              {displayedConnections.map(connection => (
-                <tr key={connection._id}>
-                  {this.schema.map(prop => (
-                    <td key={prop.name}>
+              {displayedFlights.map(flight => (
+                <tr key={flight._id}>
+                  {this.schema.map((prop, index) => (
+                    <td key={prop.name + index}>
                       {prop.secondary
-                        ? connection[prop.name][prop.secondary]
-                        : connection[prop.name]}
+                        ? flight[prop.name][prop.secondary]
+                        : flight[prop.name]}
                     </td>
                   ))}
-                  <td>
-                    <button
-                      type="button"
-                      className="btn btn-outline-dark btn-sm btn-block"
-                      data-toggle="modal"
-                      data-target={`#${connection._id}-update`}
-                    >
-                      Змінити
-                    </button>
-                    <UpdateModal id={`${connection._id}-update`} connection={connection} onSubmit={this.props.onChange} />
-                  </td>
+                  <td />
                 </tr>
               ))}
             </tbody>
           </table>
           <Pagination
-            length={Math.ceil(connections.length / this.state.pagination.step)}
+            length={Math.ceil(flights.length / this.state.pagination.step)}
             current={this.state.pagination.current}
             onChange={this.handlePage}
           />
@@ -197,30 +193,41 @@ class Pane extends Component {
   }
 }
 
-const Airport = PropTypes.shape({
-  _id: PropTypes.string.isRequired,
-  code: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
-  country: PropTypes.string.isRequired,
-});
-
 Pane.propTypes = {
+  flights: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    connection: PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      originAirport: PropTypes.string.isRequired,
+      destinationAirport: PropTypes.string.isRequired,
+      departureTime: PropTypes.string.isRequired,
+      arrivalTime: PropTypes.string.isRequired,
+    }).isRequired,
+    plane: PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      tailNum: PropTypes.string.isRequired,
+    }).isRequired,
+  })).isRequired,
+
   connections: PropTypes.arrayOf(PropTypes.shape({
     _id: PropTypes.string.isRequired,
     originAirport: PropTypes.shape({
       _id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-    }).isRequired,
+    }),
     destinationAirport: PropTypes.shape({
       _id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-    }).isRequired,
+    }),
     departureTime: PropTypes.string.isRequired,
     arrivalTime: PropTypes.string.isRequired,
-    distance: PropTypes.number.isRequired,
   })).isRequired,
-  airports: PropTypes.arrayOf(Airport).isRequired,
+
+  planes: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    tailNum: PropTypes.string.isRequired,
+  })).isRequired,
 
   onChange: PropTypes.func.isRequired,
 };

@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import './App.css';
 
+import FlightPane from './Components/Flights/Pane';
 import ConnectionPane from './Components/Connections/Pane';
 import AirportPane from './Components/Airports/Pane';
 import PlanePane from './Components/Planes/Pane';
@@ -103,6 +104,7 @@ class App extends Component {
             <div className="col-12 col-sm-12 col-md-12 col-lg-12">
               <div className="tab-content" id="nav-tabContent">
                 <div className="tab-pane fade show active" id="flights" role="tabpanel">
+                  <FlightPane flights={this.state.flights} connections={this.state.connections} planes={this.state.planes} onChange={this.loadFlights} />
                 </div>
                 <div className="tab-pane fade" id="connections" role="tabpanel">
                   <ConnectionPane connections={this.state.connections} airports={this.state.airports} onChange={this.loadConnections} />

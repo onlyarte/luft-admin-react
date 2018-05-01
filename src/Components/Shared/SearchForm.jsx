@@ -37,13 +37,13 @@ class SearchForm extends Component {
               {this.state.prop.title}{' '}<span className="caret" />
             </button>
             <div className="dropdown-menu">
-              {this.props.properties.map(prop => (
+              {this.props.properties.map((prop, index) => (
                 <a
                   role="button"
                   tabIndex={0}
                   onClick={e => this.handlePropChange(prop, e)}
                   className="dropdown-item"
-                  key={prop.name}
+                  key={prop.name + index}
                 >
                   {prop.title}
                 </a>

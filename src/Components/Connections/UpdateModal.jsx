@@ -175,8 +175,14 @@ UpdateModal.propTypes = {
   id: PropTypes.string.isRequired,
   connection: PropTypes.shape({
     _id: PropTypes.string.isRequired,
-    originAirport: Airport,
-    destinationAirport: Airport,
+    originAirport: PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+    destinationAirport: PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired,
     departureTime: PropTypes.string.isRequired,
     arrivalTime: PropTypes.string.isRequired,
     distance: PropTypes.number.isRequired,

@@ -52,6 +52,12 @@
   width: 150px;
 }
 
+.table .modal .text {
+  white-space: normal;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
 .scheme {
   overflow-x: auto;
 }
