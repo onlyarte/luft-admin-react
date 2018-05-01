@@ -35,10 +35,10 @@ class Pane extends Component {
     const { planes } = this.props;
     let filtered = [...planes];
 
-    const searchBy = this.state.search.prop;
+    const searchProp = this.state.search.prop;
     const { query } = this.state.search;
     if (this.state.search.prop) {
-      filtered = filtered.filter(a => (a[searchBy].toString().indexOf(query) > -1));
+      filtered = filtered.filter(a => (a[searchProp.name].toString().indexOf(query) > -1));
     }
 
     const sortBy = this.state.sort.prop;
