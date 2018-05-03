@@ -33,10 +33,6 @@ class Pane extends Component {
         name: 'arrivalTime',
         title: 'Прибуття',
       },
-      {
-        name: 'distance',
-        title: 'Відстань',
-      },
     ];
 
     this.state = {
@@ -218,7 +214,6 @@ Pane.propTypes = {
     }).isRequired,
     departureTime: PropTypes.string.isRequired,
     arrivalTime: PropTypes.string.isRequired,
-    distance: PropTypes.number.isRequired,
   })).isRequired,
   airports: PropTypes.arrayOf(Airport).isRequired,
 

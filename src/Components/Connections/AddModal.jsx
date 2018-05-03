@@ -13,7 +13,6 @@ class AddModal extends Component {
       destinationAirport: '',
       departureTime: '',
       arrivalTime: '',
-      distance: 0,
       status: '',
     };
   }
@@ -26,13 +25,12 @@ class AddModal extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    const { originAirport, destinationAirport, departureTime, arrivalTime, distance } = this.state;
+    const { originAirport, destinationAirport, departureTime, arrivalTime } = this.state;
     axios.post('http://localhost:3000/connections/new', {
       originAirport,
       destinationAirport,
       departureTime,
       arrivalTime,
-      distance,
     })
       .then(() => {
         this.setState({
@@ -40,7 +38,6 @@ class AddModal extends Component {
           destinationAirport: '',
           departureTime: '',
           arrivalTime: '',
-          distance: 0,
           status: 'Збережено!',
         });
         this.props.onSubmit();
@@ -117,19 +114,6 @@ class AddModal extends Component {
                     value={this.state.arrivalTime}
                     onChange={this.handleChange}
                     className="form-control"
-                    required
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor={`${this.props.id}-distance`}>Відстань (км):</label>
-                  <input
-                    type="number"
-                    name="distance"
-                    value={this.state.distance}
-                    onChange={this.handleChange}
-                    className="form-control"
-                    id={`${this.props.id}-distance`}
                     required
                   />
                 </div>

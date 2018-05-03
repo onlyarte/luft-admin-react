@@ -22,7 +22,6 @@ class UpdateModal extends Component {
     this.state = {
       departureTime: this.props.connection.departureTime,
       arrivalTime: this.props.connection.arrivalTime,
-      distance: this.props.connection.distance,
       status: '',
     };
   }
@@ -35,12 +34,11 @@ class UpdateModal extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    const { departureTime, arrivalTime, distance } = this.state;
+    const { departureTime, arrivalTime } = this.state;
     const { _id } = this.props.connection;
     axios.post(`http://localhost:3000/connections/${_id}/update`, {
       departureTime,
       arrivalTime,
-      distance,
     })
       .then(() => {
         this.setState({
@@ -129,19 +127,6 @@ class UpdateModal extends Component {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor={`${this.props.id}-distance`}>Відстань (км):</label>
-                  <input
-                    type="number"
-                    name="distance"
-                    value={this.state.distance}
-                    onChange={this.handleChange}
-                    className="form-control"
-                    id={`${this.props.id}-distance`}
-                    required
-                  />
-                </div>
-
-                <div className="form-group">
                   <div className="btn-group">
                     <input type="submit" value="Оновити" className="btn btn-outline-success" />
                     <button type="button" onClick={this.handleRemove} className="btn btn-outline-danger">Видалити</button>
@@ -163,14 +148,6 @@ class UpdateModal extends Component {
   }
 }
 
-const Airport = PropTypes.shape({
-  _id: PropTypes.string.isRequired,
-  code: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
-  country: PropTypes.string.isRequired,
-});
-
 UpdateModal.propTypes = {
   id: PropTypes.string.isRequired,
   connection: PropTypes.shape({
@@ -185,7 +162,6 @@ UpdateModal.propTypes = {
     }).isRequired,
     departureTime: PropTypes.string.isRequired,
     arrivalTime: PropTypes.string.isRequired,
-    distance: PropTypes.number.isRequired,
   }).isRequired,
   onSubmit: PropTypes.func.isRequired,
 };

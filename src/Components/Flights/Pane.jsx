@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import AddModal from './AddModal';
+import UpdateModal from './UpdateModal';
 import SearchForm from '../Shared/SearchForm';
 import Pagination from '../Shared/Pagination';
 
@@ -43,6 +44,14 @@ class Pane extends Component {
         secondary: 'tailNum',
         title: 'Літак',
       },
+      {
+        name: 'price',
+        title: 'Базова ціна',
+      },
+      {
+        name: 'coefficient',
+        title: 'Коефіцієнт ціни',
+      }
     ];
 
     this.state = {
@@ -177,7 +186,17 @@ class Pane extends Component {
                         : flight[prop.name]}
                     </td>
                   ))}
-                  <td />
+                  <td>
+                    <button
+                      type="button"
+                      className="btn btn-outline-dark btn-sm btn-block"
+                      data-toggle="modal"
+                      data-target={`#${flight._id}-update`}
+                    >
+                      Змінити
+                    </button>
+                    <UpdateModal id={`${flight._id}-update`} flight={flight} onSubmit={this.props.onChange} />
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -197,6 +216,8 @@ Pane.propTypes = {
   flights: PropTypes.arrayOf(PropTypes.shape({
     _id: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    coefficient: PropTypes.number.isRequired,
     connection: PropTypes.shape({
       _id: PropTypes.string.isRequired,
       originAirport: PropTypes.string.isRequired,
