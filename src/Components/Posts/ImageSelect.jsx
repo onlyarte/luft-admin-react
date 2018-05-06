@@ -14,7 +14,7 @@ class ImageSelect extends Component {
     const file = files[0];
     const data = new FormData();
     data.append('logo', file);
-    axios.post('http://localhost:3000/posts/image/upload', data)
+    axios.post('https://api-luft-kma.herokuapp.com/posts/image/upload', data)
       .then((result) => {
         console.log(result.data);
         this.props.onChange({ target: { name: this.props.name, value: result.data } });

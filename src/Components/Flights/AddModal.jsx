@@ -26,7 +26,7 @@ class AddModal extends Component {
     event.preventDefault();
 
     const { connection, plane, date, price } = this.state;
-    axios.post('http://localhost:3000/flights/new', {
+    axios.post('https://api-luft-kma.herokuapp.com/flights/new', {
       connection,
       plane,
       date,

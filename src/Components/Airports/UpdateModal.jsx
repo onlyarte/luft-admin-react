@@ -30,7 +30,7 @@ class UpdateModal extends Component {
     event.preventDefault();
 
     const { name } = this.state;
-    axios.post(`http://localhost:3000/airports/${this.props.airport._id}/update`, {
+    axios.post(`https://api-luft-kma.herokuapp.com/airports/${this.props.airport._id}/update`, {
       name,
     })
       .then(() => {
@@ -45,7 +45,7 @@ class UpdateModal extends Component {
   }
 
   handleRemove() {
-    axios.delete(`http://localhost:3000/airports/${this.props.airport._id}/remove`)
+    axios.delete(`https://api-luft-kma.herokuapp.com/airports/${this.props.airport._id}/remove`)
       .then(() => {
         this.closeButton.current.click();
         this.props.onSubmit();

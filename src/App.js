@@ -32,7 +32,7 @@ class App extends Component {
   }
 
   loadAirports() {
-    axios.get('http://localhost:3000/airports')
+    axios.get('https://api-luft-kma.herokuapp.com/airports')
       .then(({ data }) => {
         this.setState({ airports: data });
       })
@@ -42,7 +42,7 @@ class App extends Component {
   }
 
   loadConnections() {
-    axios.get('http://localhost:3000/connections/')
+    axios.get('https://api-luft-kma.herokuapp.com/connections/')
       .then(({ data }) => {
         this.setState({ connections: data });
       })
@@ -52,7 +52,7 @@ class App extends Component {
   }
 
   loadFlights() {
-    axios.get('http://localhost:3000/flights')
+    axios.get('https://api-luft-kma.herokuapp.com/flights')
       .then(({ data }) => {
         this.setState({ flights: data });
       })
@@ -62,7 +62,7 @@ class App extends Component {
   }
 
   loadPlanes() {
-    axios.get('http://localhost:3000/planes/')
+    axios.get('https://api-luft-kma.herokuapp.com/planes/')
       .then(({ data }) => {
         this.setState({ planes: data });
       })
