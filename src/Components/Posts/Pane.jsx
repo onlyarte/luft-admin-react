@@ -16,7 +16,7 @@ class Pane extends Component {
   }
 
   loadPosts() {
-    axios.get('https://api-luft-kma.herokuapp.com/posts/')
+    axios.get('http://localhost:3000/posts/')
       .then(({data}) => {
         this.setState({ posts: data });
       });

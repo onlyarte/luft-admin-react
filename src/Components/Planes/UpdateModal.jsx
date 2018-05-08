@@ -108,7 +108,7 @@ class UpdateModal extends Component {
     const { tailNum, seats, scheme } = this.state;
     const { _id } = this.props.plane;
     console.log({ tailNum, seats, scheme });
-    axios.post(`https://api-luft-kma.herokuapp.com/planes/${_id}/update`, {
+    axios.post(`http://localhost:3000/planes/${_id}/update`, {
       tailNum,
       seats,
       scheme,

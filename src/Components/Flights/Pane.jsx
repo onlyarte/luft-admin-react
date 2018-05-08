@@ -51,7 +51,15 @@ class Pane extends Component {
       {
         name: 'coefficient',
         title: 'Коефіцієнт ціни',
-      }
+      },
+      {
+        name: 'seatsAvailable',
+        title: 'Вільних місць',
+      },
+      {
+        name: '_id',
+        title: 'Ідентифікатор',
+      },
     ];
 
     this.state = {

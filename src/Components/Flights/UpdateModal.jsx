@@ -33,7 +33,7 @@ class UpdateModal extends Component {
     const { coefficient } = this.state;
     const { _id } = this.props.flight;
 
-    axios.post(`https://api-luft-kma.herokuapp.com/flights/${_id}/update`, {
+    axios.post(`http://localhost:3000/flights/${_id}/update`, {
       coefficient,
     })
       .then(() => {

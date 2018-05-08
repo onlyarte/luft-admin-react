@@ -26,7 +26,7 @@ class AddModal extends Component {
     event.preventDefault();
 
     const { code, name, city, country } = this.state;
-    axios.post('https://api-luft-kma.herokuapp.com/airports/new', {
+    axios.post('http://localhost:3000/airports/new', {
       code,
       name,
       city,

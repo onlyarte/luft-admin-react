@@ -30,7 +30,7 @@ class UpdateModal extends Component {
     event.preventDefault();
 
     const { name } = this.state;
-    axios.post(`https://api-luft-kma.herokuapp.com/airports/${this.props.airport._id}/update`, {
+    axios.post(`http://localhost:3000/airports/${this.props.airport._id}/update`, {
       name,
     })
       .then(() => {

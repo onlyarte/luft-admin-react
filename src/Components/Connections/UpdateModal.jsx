@@ -36,7 +36,7 @@ class UpdateModal extends Component {
 
     const { departureTime, arrivalTime } = this.state;
     const { _id } = this.props.connection;
-    axios.post(`https://api-luft-kma.herokuapp.com/connections/${_id}/update`, {
+    axios.post(`http://localhost:3000/connections/${_id}/update`, {
       departureTime,
       arrivalTime,
     })

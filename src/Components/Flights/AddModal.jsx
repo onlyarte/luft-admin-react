@@ -26,7 +26,7 @@ class AddModal extends Component {
     event.preventDefault();
 
     const { connection, plane, date, price } = this.state;
-    axios.post('https://api-luft-kma.herokuapp.com/flights/new', {
+    axios.post('http://localhost:3000/flights/new', {
       connection,
       plane,
       date,
@@ -100,13 +100,14 @@ class AddModal extends Component {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor={`${this.props.id}-date`}>Дата (2018-05-27):</label>
+                  <label htmlFor={`${this.props.id}-date`}>Дата:</label>
                   <input
                     type="text"
                     name="date"
                     value={this.state.date}
                     onChange={this.handleChange}
                     className="form-control"
+                    placeholder="2018-05-27"
                     required
                   />
                 </div>
