@@ -108,11 +108,11 @@ class UpdateModal extends Component {
     const { tailNum, seats, scheme } = this.state;
     const { _id } = this.props.plane;
     console.log({ tailNum, seats, scheme });
-    axios.post(`http://localhost:3000/planes/${_id}/update`, {
+    axios.post(`https://api-luft-kma.herokuapp.com/planes/${_id}/update`, {
       tailNum,
       seats,
       scheme,
-    })
+    }, { withCredentials: true })
       .then((res) => {
         console.log(res);
         this.setState({
@@ -127,7 +127,7 @@ class UpdateModal extends Component {
 
   handleRemove() {
     const { _id } = this.props.plane;
-    axios.delete(`https://api-luft-kma.herokuapp.com/planes/${_id}/remove`)
+    axios.delete(`https://api-luft-kma.herokuapp.com/planes/${_id}/remove`, { withCredentials: true })
       .then(() => {
         this.closeButton.current.click();
         this.props.onSubmit();

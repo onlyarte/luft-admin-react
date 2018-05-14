@@ -92,11 +92,11 @@ class AddModal extends Component {
     event.preventDefault();
 
     const { tailNum, seats, scheme } = this.state;
-    axios.post('http://localhost:3000/planes/new', {
+    axios.post('https://api-luft-kma.herokuapp.com/planes/new', {
       tailNum,
       seats,
       scheme,
-    })
+    }, { withCredentials: true })
       .then(() => {
         this.setState({
           tailNum: '',

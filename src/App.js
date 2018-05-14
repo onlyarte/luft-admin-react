@@ -7,7 +7,7 @@ import FlightPane from './Components/Flights/Pane';
 import ConnectionPane from './Components/Connections/Pane';
 import AirportPane from './Components/Airports/Pane';
 import PlanePane from './Components/Planes/Pane';
-import FinancesPane from './Components/Finances/Pane';
+import ReportPane from './Components/Reports/Pane';
 import LoginForm from './Components/LoginForm';
 
 class App extends Component {
@@ -48,7 +48,7 @@ class App extends Component {
 
   fetchUser() {
     return axios.get(
-      'http://localhost:3000/admin/current',
+      'https://api-luft-kma.herokuapp.com/admin/current',
       { withCredentials: true },
     )
       .then(({ data }) => {
@@ -61,7 +61,7 @@ class App extends Component {
   }
 
   fetchAirports() {
-    axios.get('http://localhost:3000/airports')
+    axios.get('https://api-luft-kma.herokuapp.com/airports')
       .then(({ data }) => {
         this.setState({ airports: data });
       })
@@ -71,7 +71,7 @@ class App extends Component {
   }
 
   fetchConnections() {
-    axios.get('http://localhost:3000/connections/')
+    axios.get('https://api-luft-kma.herokuapp.com/connections/')
       .then(({ data }) => {
         this.setState({ connections: data });
       })
@@ -81,7 +81,7 @@ class App extends Component {
   }
 
   fetchFlights() {
-    axios.get('http://localhost:3000/flights')
+    axios.get('https://api-luft-kma.herokuapp.com/flights')
       .then(({ data }) => {
         console.log(data);
         this.setState({ flights: data });
@@ -92,7 +92,7 @@ class App extends Component {
   }
 
   fetchPlanes() {
-    axios.get('http://localhost:3000/planes/')
+    axios.get('https://api-luft-kma.herokuapp.com/planes/')
       .then(({ data }) => {
         this.setState({ planes: data });
       })
@@ -111,7 +111,7 @@ class App extends Component {
 
   handleLogout() {
     axios.delete(
-      'http://localhost:3000/admin/logout',
+      'https://api-luft-kma.herokuapp.com/admin/logout',
       { withCredentials: true },
     )
       .then(() => {
@@ -199,7 +199,7 @@ class App extends Component {
                       />
                     </div>
                     <div className="tab-pane fade" id="reports" role="tabpanel">
-                      <FinancesPane />
+                      <ReportPane />
                     </div>
                   </div>
                 </div>

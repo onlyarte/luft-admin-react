@@ -21,7 +21,7 @@ class TicketsTable extends Component {
           </thead>
           <tbody>
             {this.props.tickets.map(ticket => (
-              <tr>
+              <tr key={ticket._id}>
                 <td>{ticket.flight.origin} — {ticket.flight.destination}</td>
                 <td>{ticket.flight.date}</td>
                 <td>{ticket.flight.departure} — {ticket.flight.arrival}</td>
@@ -45,7 +45,7 @@ TicketsTable.propTypes = {
     _id: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     status: PropTypes.string.isRequired,
-    pasanger: PropTypes.shape({
+    passanger: PropTypes.shape({
       firstname: PropTypes.string.isRequired,
       surname: PropTypes.string.isRequired,
     }).isRequired,

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import TicketsTable from './TicketsTable';
 
-class FinancesPane extends Component {
+class ReportPane extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -26,7 +26,10 @@ class FinancesPane extends Component {
   handlePeriodReport(event) {
     event.preventDefault();
 
-    axios.get(`http://localhost:3000/tickets/period/${this.state.periodFrom}/${this.state.periodTo}`)
+    axios.get(
+      `https://api-luft-kma.herokuapp.com/tickets/period/${this.state.periodFrom}/${this.state.periodTo}`,
+      { withCredentials: true },
+    )
       .then(({ data }) => {
         this.setState({ tickets: data });
       })
@@ -38,7 +41,10 @@ class FinancesPane extends Component {
   handleFlightReport(event) {
     event.preventDefault();
 
-    axios.get(`http://localhost:3000/tickets/flight/${this.state.flight}`)
+    axios.get(
+      `https://api-luft-kma.herokuapp.com/tickets/flight/${this.state.flight}`,
+      { withCredentials: true }
+    )
       .then(({ data }) => {
         this.setState({ tickets: data });
       })
@@ -115,4 +121,4 @@ class FinancesPane extends Component {
   }
 }
 
-export default FinancesPane;
+export default ReportPane;

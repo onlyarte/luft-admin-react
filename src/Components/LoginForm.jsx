@@ -24,7 +24,7 @@ class LoginForm extends Component {
     event.preventDefault();
     const { email, password } = this.state;
 
-    axios.post('http://localhost:3000/admin/login', {
+    axios.post('https://api-luft-kma.herokuapp.com/admin/login', {
       email, password,
     }, { withCredentials: true })
       .then(({ data }) => {

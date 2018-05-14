@@ -26,12 +26,12 @@ class AddModal extends Component {
     event.preventDefault();
 
     const { originAirport, destinationAirport, departureTime, arrivalTime } = this.state;
-    axios.post('http://localhost:3000/connections/new', {
+    axios.post('https://api-luft-kma.herokuapp.com/connections/new', {
       originAirport,
       destinationAirport,
       departureTime,
       arrivalTime,
-    })
+    }, { withCredentials: true })
       .then(() => {
         this.setState({
           originAirport: '',

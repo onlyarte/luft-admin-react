@@ -36,10 +36,10 @@ class UpdateModal extends Component {
 
     const { departureTime, arrivalTime } = this.state;
     const { _id } = this.props.connection;
-    axios.post(`http://localhost:3000/connections/${_id}/update`, {
+    axios.post(`https://api-luft-kma.herokuapp.com/connections/${_id}/update`, {
       departureTime,
       arrivalTime,
-    })
+    }, { withCredentials: true })
       .then(() => {
         this.setState({
           status: 'Збережено!',
@@ -53,7 +53,10 @@ class UpdateModal extends Component {
 
   handleRemove() {
     const { _id } = this.props.connection;
-    axios.delete(`https://api-luft-kma.herokuapp.com/connections/${_id}/remove`)
+    axios.delete(
+      `https://api-luft-kma.herokuapp.com/connections/${_id}/remove`,
+      { withCredentials: true },
+    )
       .then(() => {
         this.closeButton.current.click();
         this.props.onSubmit();
