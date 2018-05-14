@@ -46,7 +46,7 @@ class UpdateModal extends Component {
 
   handleRemove() {
     axios.delete(
-      `https://api-luft-kma.herokuapp.com/airports/airports/${this.props.airport._id}/remove`,
+      `https://api-luft-kma.herokuapp.com/airports/${this.props.airport._id}/remove`,
       { withCredentials: true },
     )
       .then(() => {
