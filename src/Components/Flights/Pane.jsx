@@ -140,7 +140,7 @@ class Pane extends Component {
 
     return (
       <React.Fragment>
-        <h1>Маршрути</h1>
+        <h1>Рейси</h1>
         <SearchForm properties={this.schema} onSubmit={this.handleSearch} />
         <div className="table-responsive">
           <table className="table table-striped table-hover">
