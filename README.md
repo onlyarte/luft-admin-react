@@ -1,9 +1,7 @@
 # LUFT
 
-Online airline ticketing system consisting of an API and two React applications for booking tickets and managing data.
+Airline reservation system with scheduling, web bookings.
 
-It was developed as a part of my coursework at Kyiv-Mohyla Academy. It is no longer maintained, so you probably won't be able to find some tickets.
-
-<img src="https://image.ibb.co/mqYgnp/Purii_Presentation_5.jpg" alt="Purii_Presentation_5" border="0">
-<img src="https://image.ibb.co/bZD309/Purii_Presentation_6.jpg" alt="Purii_Presentation_6" border="0">
-<img src="https://image.ibb.co/gMFGL9/Purii_Presentation_7.jpg" alt="Purii_Presentation_7" border="0">
+<img src="https://drive.google.com/uc?export=download&id=1smaWA16RMb6WkO7Qyc_2mC45rj8QHHsd" border="0">
+<img src="https://drive.google.com/uc?export=download&id=1JrrAkQt4xeg5uxrxcQjTEoQwBUO3-83E" border="0">
+<img src="https://drive.google.com/uc?export=download&id=1C0oBCEzdFVzg_0V4_mc3kuvgFZnQpE6k" border="0">
